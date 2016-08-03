@@ -1,0 +1,73 @@
+﻿@model IEnumerable<KapyTestData.Models.newsTest3>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>*@
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.newsdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.newstime)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.source)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.origURL)
+        </th>*@
+        @*<th>
+            
+            @Html.DisplayNameFor(model => model.description)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>*@
+        <th>      </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.newsdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.newstime)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.source)
+        </td>
+        <td>
+            <a href="@Html.DisplayFor(modelItem => item.origURL) " >@Html.DisplayFor(modelItem => item.origURL)</a>
+        </td>*@
+        @*<td>
+            @{
+                var shortDescript = String.Concat(item.description.Take(350))+"...";
+            }
+            @Html.DisplayFor(modelItem => shortDescript)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.category)
+        </td>*@
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.newsID }) |*@
+            @Html.ActionLink("Details", "Details", new { id=item.newsID }) @*|
+            @Html.ActionLink("Delete", "Delete", new { id=item.newsID })*@
+        </td>
+    </tr>
+}
+
+</table>

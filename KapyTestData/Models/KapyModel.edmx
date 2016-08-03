@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="databaseTest1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="ActionId" Type="int" Nullable="false" />
+          <Property Name="ActionName" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Action_Records">
+          <Key>
+            <PropertyRef Name="MemberId" />
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="MemberId" Type="int" Nullable="false" />
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="ActionDate" Type="datetime" />
+          <Property Name="ActionId" Type="int" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" Nullable="false" />
+          <Property Name="PostTime" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="C_NumOfLikes" Type="int" />
+          <Property Name="C_Content" Type="text" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="NewsID" Type="int" />
+          <Property Name="IsDisplay" Type="nchar" MaxLength="10" />
+          <Property Name="DateWritten" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsId" />
+          </Key>
+          <Property Name="NewsId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="60" />
+          <Property Name="Time" Type="time" Precision="7" />
+          <Property Name="Description" Type="text" />
+          <Property Name="PicUrl" Type="nchar" MaxLength="60" />
+          <Property Name="OriginalLink" Type="nchar" MaxLength="60" />
+          <Property Name="SourceID" Type="int" />
+          <Property Name="NumOfClicks" Type="int" />
+          <Property Name="N_NumOfLikes" Type="int" />
+        </EntityType>
+        <EntityType Name="News_Categories">
+          <Key>
+            <PropertyRef Name="NewsId" />
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="NewsId" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="newsTest">
+          <Key>
+            <PropertyRef Name="newsID" />
+          </Key>
+          <Property Name="newsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="ntext" />
+          <Property Name="newsdate" Type="nchar" MaxLength="10" />
+          <Property Name="newstime" Type="nchar" MaxLength="10" />
+          <Property Name="source" Type="varchar" MaxLength="50" />
+          <Property Name="origURL" Type="varchar(max)" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="category" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="newsTest3">
+          <Key>
+            <PropertyRef Name="newsID" />
+          </Key>
+          <Property Name="newsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="ntext" />
+          <Property Name="newsdate" Type="nchar" MaxLength="10" />
+          <Property Name="newstime" Type="nchar" MaxLength="10" />
+          <Property Name="source" Type="varchar" MaxLength="50" />
+          <Property Name="origURL" Type="varchar(max)" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="category" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="TimeCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Source">
+          <Key>
+            <PropertyRef Name="SourceId" />
+          </Key>
+          <Property Name="SourceId" Type="int" Nullable="false" />
+          <Property Name="SourceName" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="SourceHomePage" Type="nchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="NewsId" />
+          </Key>
+          <Property Name="NewsId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="60" />
+          <Property Name="Time" Type="time" Precision="7" />
+          <Property Name="Description" Type="text" />
+          <Property Name="PicUrl" Type="nchar" MaxLength="60" />
+          <Property Name="OriginalLink" Type="nchar" MaxLength="60" />
+          <Property Name="SourceID" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nchar" MaxLength="10" />
+          <Property Name="Email" Type="nchar" MaxLength="20" />
+          <Property Name="Password" Type="nchar" MaxLength="10" />
+          <Property Name="IsActive" Type="nchar" MaxLength="10" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="NotifyFrequency" Type="int" />
+          <Property Name="IsNotified" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="User_Categories">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Sources">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="SourceID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="SourceID" Type="int" Nullable="false" />
+          <Property Name="SubscribeID" Type="int" Nullable="false" />
+          <Property Name="SubscribeTime" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="databaseTest1ModelStoreContainer">
+          <EntitySet Name="Action" EntityType="Self.Action" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Action_Records" EntityType="Self.Action_Records" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News_Categories" EntityType="Self.News_Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="newsTest" EntityType="Self.newsTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="newsTest3" EntityType="Self.newsTest3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Source" EntityType="Self.Source" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Categories" EntityType="Self.User_Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Sources" EntityType="Self.User_Sources" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="databaseTest1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="ActionId" Type="Int32" Nullable="false" />
+          <Property Name="ActionName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Action_Records">
+          <Key>
+            <PropertyRef Name="MemberId" />
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <Property Name="ActionDate" Type="DateTime" Precision="3" />
+          <Property Name="ActionId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" />
+          <Property Name="PostTime" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="C_NumOfLikes" Type="Int32" />
+          <Property Name="C_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="NewsID" Type="Int32" />
+          <Property Name="IsDisplay" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DateWritten" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsId" />
+          </Key>
+          <Property Name="NewsId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="Time" Type="Time" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PicUrl" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="OriginalLink" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="SourceID" Type="Int32" />
+          <Property Name="NumOfClicks" Type="Int32" />
+          <Property Name="N_NumOfLikes" Type="Int32" />
+        </EntityType>
+        <EntityType Name="News_Categories">
+          <Key>
+            <PropertyRef Name="NewsId" />
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="NewsId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="newsTest">
+          <Key>
+            <PropertyRef Name="newsID" />
+          </Key>
+          <Property Name="newsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="newsdate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="newstime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="origURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="category" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="newsTest3">
+          <Key>
+            <PropertyRef Name="newsID" />
+          </Key>
+          <Property Name="newsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="newsdate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="newstime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="origURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="category" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="TimeCreated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Source">
+          <Key>
+            <PropertyRef Name="SourceId" />
+          </Key>
+          <Property Name="SourceId" Type="Int32" Nullable="false" />
+          <Property Name="SourceName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="SourceHomePage" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="NewsId" />
+          </Key>
+          <Property Name="NewsId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="Time" Type="Time" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PicUrl" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="OriginalLink" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="SourceID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IsActive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="NotifyFrequency" Type="Int32" />
+          <Property Name="IsNotified" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User_Categories">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Sources">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="SourceID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="SourceID" Type="Int32" Nullable="false" />
+          <Property Name="SubscribeID" Type="Int32" Nullable="false" />
+          <Property Name="SubscribeTime" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityContainer Name="databaseTest1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actions" EntityType="Self.Action" />
+          <EntitySet Name="Action_Records" EntityType="Self.Action_Records" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="News_Categories" EntityType="Self.News_Categories" />
+          <EntitySet Name="newsTests" EntityType="Self.newsTest" />
+          <EntitySet Name="newsTest3" EntityType="Self.newsTest3" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Sources" EntityType="Self.Source" />
+          <EntitySet Name="Tables" EntityType="Self.Table" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="User_Categories" EntityType="Self.User_Categories" />
+          <EntitySet Name="User_Sources" EntityType="Self.User_Sources" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="databaseTest1ModelStoreContainer" CdmEntityContainer="databaseTest1Entities">
+          <EntitySetMapping Name="Actions">
+            <EntityTypeMapping TypeName="databaseTest1Model.Action">
+              <MappingFragment StoreEntitySet="Action">
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Action_Records">
+            <EntityTypeMapping TypeName="databaseTest1Model.Action_Records">
+              <MappingFragment StoreEntitySet="Action_Records">
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="databaseTest1Model.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="databaseTest1Model.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+                <ScalarProperty Name="C_NumOfLikes" ColumnName="C_NumOfLikes" />
+                <ScalarProperty Name="C_Content" ColumnName="C_Content" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="IsDisplay" ColumnName="IsDisplay" />
+                <ScalarProperty Name="DateWritten" ColumnName="DateWritten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="databaseTest1Model.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+                <ScalarProperty Name="OriginalLink" ColumnName="OriginalLink" />
+                <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+                <ScalarProperty Name="NumOfClicks" ColumnName="NumOfClicks" />
+                <ScalarProperty Name="N_NumOfLikes" ColumnName="N_NumOfLikes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News_Categories">
+            <EntityTypeMapping TypeName="databaseTest1Model.News_Categories">
+              <MappingFragment StoreEntitySet="News_Categories">
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="newsTests">
+            <EntityTypeMapping TypeName="databaseTest1Model.newsTest">
+              <MappingFragment StoreEntitySet="newsTest">
+                <ScalarProperty Name="newsID" ColumnName="newsID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="newsdate" ColumnName="newsdate" />
+                <ScalarProperty Name="newstime" ColumnName="newstime" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="origURL" ColumnName="origURL" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="category" ColumnName="category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="newsTest3">
+            <EntityTypeMapping TypeName="databaseTest1Model.newsTest3">
+              <MappingFragment StoreEntitySet="newsTest3">
+                <ScalarProperty Name="newsID" ColumnName="newsID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="newsdate" ColumnName="newsdate" />
+                <ScalarProperty Name="newstime" ColumnName="newstime" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="origURL" ColumnName="origURL" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="category" ColumnName="category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="databaseTest1Model.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TimeCreated" ColumnName="TimeCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="databaseTest1Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sources">
+            <EntityTypeMapping TypeName="databaseTest1Model.Source">
+              <MappingFragment StoreEntitySet="Source">
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="SourceName" ColumnName="SourceName" />
+                <ScalarProperty Name="SourceHomePage" ColumnName="SourceHomePage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="databaseTest1Model.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+                <ScalarProperty Name="OriginalLink" ColumnName="OriginalLink" />
+                <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="databaseTest1Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="NotifyFrequency" ColumnName="NotifyFrequency" />
+                <ScalarProperty Name="IsNotified" ColumnName="IsNotified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Categories">
+            <EntityTypeMapping TypeName="databaseTest1Model.User_Categories">
+              <MappingFragment StoreEntitySet="User_Categories">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Sources">
+            <EntityTypeMapping TypeName="databaseTest1Model.User_Sources">
+              <MappingFragment StoreEntitySet="User_Sources">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+                <ScalarProperty Name="SubscribeID" ColumnName="SubscribeID" />
+                <ScalarProperty Name="SubscribeTime" ColumnName="SubscribeTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

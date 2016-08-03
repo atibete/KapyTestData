@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="databaseTest1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Action">
+    <Key>
+      <PropertyRef Name="ActionId" />
+    </Key>
+    <Property Name="ActionId" Type="Int32" Nullable="false" />
+    <Property Name="ActionName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Action_Records">
+    <Key>
+      <PropertyRef Name="MemberId" />
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="MemberId" Type="Int32" Nullable="false" />
+    <Property Name="AdminId" Type="Int32" Nullable="false" />
+    <Property Name="ActionDate" Type="DateTime" Precision="3" />
+    <Property Name="ActionId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="Int32" Nullable="false" />
+    <Property Name="PostTime" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="C_NumOfLikes" Type="Int32" />
+    <Property Name="C_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="NewsID" Type="Int32" />
+    <Property Name="IsDisplay" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DateWritten" Type="Time" Precision="7" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewsId" />
+    </Key>
+    <Property Name="NewsId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="Time" Type="Time" Precision="7" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PicUrl" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="OriginalLink" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="SourceID" Type="Int32" />
+    <Property Name="NumOfClicks" Type="Int32" />
+    <Property Name="N_NumOfLikes" Type="Int32" />
+  </EntityType>
+  <EntityType Name="News_Categories">
+    <Key>
+      <PropertyRef Name="NewsId" />
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="NewsId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="newsTest">
+    <Key>
+      <PropertyRef Name="newsID" />
+    </Key>
+    <Property Name="newsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="newsdate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="newstime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="origURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="category" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="newsTest3">
+    <Key>
+      <PropertyRef Name="newsID" />
+    </Key>
+    <Property Name="newsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="newsdate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="newstime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="origURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="category" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="NotificationId" />
+    </Key>
+    <Property Name="NotificationId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="TimeCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Source">
+    <Key>
+      <PropertyRef Name="SourceId" />
+    </Key>
+    <Property Name="SourceId" Type="Int32" Nullable="false" />
+    <Property Name="SourceName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SourceHomePage" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="NewsId" />
+    </Key>
+    <Property Name="NewsId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="Time" Type="Time" Precision="7" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PicUrl" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="OriginalLink" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="SourceID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IsActive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="NotifyFrequency" Type="Int32" />
+    <Property Name="IsNotified" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User_Categories">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Sources">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="SourceID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="SourceID" Type="Int32" Nullable="false" />
+    <Property Name="SubscribeID" Type="Int32" Nullable="false" />
+    <Property Name="SubscribeTime" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityContainer Name="databaseTest1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actions" EntityType="Self.Action" />
+    <EntitySet Name="Action_Records" EntityType="Self.Action_Records" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="News_Categories" EntityType="Self.News_Categories" />
+    <EntitySet Name="newsTests" EntityType="Self.newsTest" />
+    <EntitySet Name="newsTest3" EntityType="Self.newsTest3" />
+    <EntitySet Name="Notifications" EntityType="Self.Notification" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Sources" EntityType="Self.Source" />
+    <EntitySet Name="Tables" EntityType="Self.Table" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="User_Categories" EntityType="Self.User_Categories" />
+    <EntitySet Name="User_Sources" EntityType="Self.User_Sources" />
+  </EntityContainer>
+</Schema>

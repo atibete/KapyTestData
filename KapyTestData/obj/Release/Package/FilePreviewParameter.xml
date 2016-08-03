@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Kapy" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\tirunew\\Desktop\\KapyTestData\\KapyTestData\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\tirunew\\Desktop\\KapyTestData\\KapyTestData\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="databaseTest1Entities-Web.config Connection String" description="" value="metadata=res://*/Models.KapyModel.csdl|res://*/Models.KapyModel.ssdl|res://*/Models.KapyModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=kapytest1.database.windows.net;initial catalog=databaseTest1;user id=kapygroup;password=Kapykapy1234;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\tirunew\\Desktop\\KapyTestData\\KapyTestData\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='databaseTest1Entities']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-KapyTestData-20160726013702.mdf;Initial Catalog=aspnet-KapyTestData-20160726013702;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\tirunew\\Desktop\\KapyTestData\\KapyTestData\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>
